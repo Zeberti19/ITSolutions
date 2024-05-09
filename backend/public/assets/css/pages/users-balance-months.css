@@ -1,0 +1,36 @@
+body.users-balance-months {
+    color: #109910;
+}
+body.users-balance-months .select {
+    --color: #109910;
+    border-color: var(--color);
+    color: var(--color);
+}
+
+.users-balance-months .prj-page__header {
+    background: linear-gradient(#00cb00, #fff);
+    color: white;
+    font-style: italic;
+}
+.users-balance-months__user-select {
+    margin-bottom: 1rem;
+}
+
+.users-balance-months__header_user-select {
+    margin-bottom: 3rem;
+}
+
+#user-balance-data {
+ min-width: 20rem;
+ text-align: right;
+}
+
+#user-balance-data > thead > tr > th{
+    text-align: center;
+}
+
+#user-balance-data > thead > tr > th,
+#user-balance-data > tbody > tr > td{
+    border: 0.1rem solid #109910;
+    padding: 0.3rem;
+}

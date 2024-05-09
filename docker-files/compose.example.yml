@@ -1,0 +1,27 @@
+name: itsolution
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - 45000:80
+    depends_on:
+      - database
+    volumes:
+      - ../backend:/var/www/html
+    networks:
+      - itsolution
+  database:
+    image: mysql:8.3.0
+    ports:
+      - 45001:3306
+    environment:
+      MYSQL_DATABASE: itsolution
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ../database-data:/var/lib/mysql #MYSQL
+    networks:
+      - itsolution
+
+networks:
+  itsolution:
