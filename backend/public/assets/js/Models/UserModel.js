@@ -1,5 +1,4 @@
-'use strict';
-class UserModel {
+export default class UserModel {
     _id;
     _controllerName = 'usr';
 

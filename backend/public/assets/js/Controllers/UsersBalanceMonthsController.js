@@ -1,5 +1,7 @@
-'use strict';
-class UsersBalanceMonthsController {
+import UserModel from "../Models/UserModel.js"
+import UsersBalanceMonthsView from "../Views/UsersBalanceMonthsView.js"
+
+export default class UsersBalanceMonthsController {
 
     _view;
 
@@ -18,7 +20,3 @@ class UsersBalanceMonthsController {
         this._userChange(select.value);
     }
 }
-
-window.onload = function() {
-    window.pageController = new UsersBalanceMonthsController();
-};

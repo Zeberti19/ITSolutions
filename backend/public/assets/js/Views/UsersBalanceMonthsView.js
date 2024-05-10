@@ -1,5 +1,4 @@
-'use strict';
-class UsersBalanceMonthsView {
+export default class UsersBalanceMonthsView {
 
     balanceMonthsTableId = 'user-balance-data';
 

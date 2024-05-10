@@ -11,9 +11,10 @@
     <title>Chesnokov Evgenii. Test task</title>
     <link href="/assets/css/_common.css" rel="stylesheet">
     <link href="/assets/css/pages/users-balance-months.css" rel="stylesheet">
-    <script src="/assets/js/Models/UserModel.js"></script>
-    <script src="/assets/js/Views/UsersBalanceMonthsView.js"></script>
-    <script src="/assets/js/Controllers/UsersBalanceMonthsController.js"></script>
+    <script type="module">
+        import UsersBalanceMonthsController from "/assets/js/Controllers/UsersBalanceMonthsController.js";
+        window.pageController = new UsersBalanceMonthsController();
+    </script>
 </head>
 <body class="prj-page users-balance-months">
     <header class="prj-page__header">
