@@ -14,9 +14,13 @@ class UserModel
         $dataDB = DB::connect()->query(
            <<<SQL
            select distinct u.id, u.name
-           from users u 
+           from users u
                 inner join user_accounts ua on ua.user_id = u.id
-                inner join transactions t on (t.account_from = ua.id or t.account_to = ua.id)
+           where ua.id in (select account_from as account
+                           from transactions
+                           union
+                           select account_to as account
+                           from transactions)
            SQL);
 
         $dataProcessed = [];
@@ -40,6 +44,8 @@ class UserModel
                      from transactions t
                           inner join user_accounts ua_from on t.account_from = ua_from.id
                           inner join user_accounts ua_to on t.account_to = ua_to.id
+                     where ua_from.user_id = :user_from_id and
+                           ua_from.user_id != ua_to.id
                      union all
                      select ua_to.user_id as user_from_id,
                             ua_from.user_id as user_to_id,
@@ -48,9 +54,9 @@ class UserModel
                      from transactions t
                           inner join user_accounts ua_from on t.account_from = ua_from.id
                           inner join user_accounts ua_to on t.account_to = ua_to.id
+                     where ua_to.user_id = :user_from_id and
+                           ua_from.user_id != ua_to.id
                  ) data_main
-            where user_from_id = :user_from_id and
-                  user_from_id != user_to_id
             group by trdate
             order by trdate
             SQL);
